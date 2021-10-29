@@ -1,0 +1,13 @@
+# depslib dependency file v1.0
+1635498896 source:/home/javi/Uni/EstrDat/PECL1/PilasColas.cpp
+	<iostream>
+	"PilasColas.h"
+
+1635094404 /home/javi/Uni/EstrDat/PECL1/PilasColas.h
+	<iostream>
+
+1635094505 source:/home/javi/Uni/EstrDat/PECL1/main.cpp
+	<iostream>
+	<ctime>
+	"PilasColas.h"
+
