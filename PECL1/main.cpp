@@ -13,16 +13,7 @@ string generarIdPaquete()
     int numero1, numero2;
     char abecedario[] = {'A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z'};
 
-    for (int i=0; i<2; i++)
-    {
-        numero1 = numero1*10 + rand()%10;
-    }
-    for (int j=0; j<4; j++)
-    {
-        numero2 = numero2*10 + rand()%10;
-    }
-
-    id = numero1 +  abecedario[rand()%26] + numero2;
+    id = to_string(rand()%99) +  abecedario[rand()%26] + to_string(rand()%9999);
 
     return id;
 }
@@ -33,7 +24,7 @@ string generarNIF()
     string NIF;
     char letras[] = {'T','R','w','A','G','M','Y','F','P','D','X','B','N','J','Z','S','Q','V','H','L','C','K','E'};
 
-    for (int i=1;i<9;i++)
+    for (int i=0;i<7;i++)
     {
         numero = numero*10 + rand()%10;
     }
@@ -76,18 +67,29 @@ Paquete generarPaquete()
     return p;
 }
 
+void cogerPaquetes(int contador)
+{
+    do{
+        cout << '\n' << "Presiona Enter para coger más paquetes..." << '\n' << endl;
+    }
+    while (cin.get() != '\n');
+    contador++;
+}
+
 int main()
 {
     srand(time(NULL));
     Cola almacen, muelleNO, muelleNE, muelleSO, muelleSE, zonaNO, zonaNE, zonaSO, zonaSE;
     int paquetesGenerados, paquetesCogidos, paquetesCargados, contador;
-    while (paquetesGenerados < N1)
+    for (int i=0; i<N1; i++)
     {
         Paquete p = generarPaquete();
-        cout << "Generado paquete con ID" << p.idPaquete << endl; //Código de prueba
         almacen.encolar(p);
         ++paquetesGenerados;
+        cout << "Generado paquete con ID: " << p.idPaquete << endl; //Prueba
     }
+    //Presionar Enter para coger N2 paquetes de la cola
+
 
     while (paquetesCogidos < N2)
     {
@@ -100,7 +102,7 @@ int main()
         minLong = p.coordenadas.longitud[1];
         segLong = p.coordenadas.longitud[2];
 
-        if ((minLat >=29) && (segLat >= 30)) || (minLat >=30){
+        if (((minLat >=29) && (segLat >= 30)) || (minLat >=30)){
             //Omitimos los grados porque son siempre los mismos (al menos en esta aplicación)
             if (minLong >= 22) muelleNO.encolar(p);
             else muelleNE.encolar(p);
@@ -112,6 +114,8 @@ int main()
 
         //while (paquetesCargados < N3)
     }
+
+    //cogerPaquetes(contador);
 
     return 0;
 }
