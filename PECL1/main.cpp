@@ -1,19 +1,29 @@
 #include <iostream>
 #include <ctime>
 #include "PilasColas.h"
+
 #define N1 100
 #define N2 10
 #define N3 5
+#define N4 4
 
 using namespace std;
+
+string padTo(std::string &str, const size_t num, const char paddingChar = '0')
+{
+    if(num > str.size())
+        str.insert(0, num - str.size(), paddingChar);
+    return str;
+}
 
 string generarIdPaquete()
 {
     string id;
-    int numero1, numero2;
     char abecedario[] = {'A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z'};
-
-    id = to_string(rand()%99) +  abecedario[rand()%26] + to_string(rand()%9999);
+    string parte1 = to_string(rand()%99);
+    string parte2 = to_string(rand()%9999);
+    id= padTo(parte1,2)+  abecedario[rand()%26] + padTo(parte2,4);
+//    id = padTo(to_string(rand()%99),2) +  abecedario[rand()%26] + padTo(to_string(rand()%9999),4);
 
     return id;
 }
@@ -24,7 +34,7 @@ string generarNIF()
     string NIF;
     char letras[] = {'T','R','w','A','G','M','Y','F','P','D','X','B','N','J','Z','S','Q','V','H','L','C','K','E'};
 
-    for (int i=0;i<7;i++)
+    for (int i=0;i<6;i++)
     {
         numero = numero*10 + rand()%10;
     }
@@ -70,7 +80,7 @@ Paquete generarPaquete()
 void cogerPaquetes(int contador)
 {
     do{
-        cout << '\n' << "Presiona Enter para coger mÃ¡s paquetes..." << '\n' << endl;
+        cout << '\n' << "Presiona Enter para coger más paquetes..." << '\n' << endl;
     }
     while (cin.get() != '\n');
     contador++;
@@ -79,9 +89,16 @@ void cogerPaquetes(int contador)
 int main()
 {
     srand(time(NULL));
-    Cola almacen, muelleNO, muelleNE, muelleSO, muelleSE, zonaNO, zonaNE, zonaSO, zonaSE;
+    /*ListaZonas zonas= new ListaZonas();
+    ListaMuelles muelles= new ListaMuelles();*/
+    //Cola almacen= new Cola(); //muelleNO, muelleNE, muelleSO, muelleSE, zonaNO, zonaNE, zonaSO, zonaSE;
+    Cola almacen,muelleNO, muelleNE, muelleSO, muelleSE, zonaNO, zonaNE, zonaSO, zonaSE;
     int paquetesGenerados, paquetesCogidos, paquetesCargados, contador;
-    for (int i=0; i<N1; i++)
+    /*for(int i=0; i<N4;i++)
+    {
+
+    }*/
+    for (int j=0; j<N1; j++)
     {
         Paquete p = generarPaquete();
         almacen.encolar(p);
@@ -89,7 +106,6 @@ int main()
         cout << "Generado paquete con ID: " << p.idPaquete << endl; //Prueba
     }
     //Presionar Enter para coger N2 paquetes de la cola
-
 
     while (paquetesCogidos < N2)
     {
@@ -103,7 +119,7 @@ int main()
         segLong = p.coordenadas.longitud[2];
 
         if (((minLat >=29) && (segLat >= 30)) || (minLat >=30)){
-            //Omitimos los grados porque son siempre los mismos (al menos en esta aplicaciÃ³n)
+            //Omitimos los grados porque son siempre los mismos (al menos en esta aplicación)
             if (minLong >= 22) muelleNO.encolar(p);
             else muelleNE.encolar(p);
         } else {

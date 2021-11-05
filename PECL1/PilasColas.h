@@ -5,7 +5,7 @@
 
 using namespace std;
 
-//DefiniciÃ³n de tipos de datos:
+//Definición de tipos de datos:
 
 struct CoordenadasGPS
 {
@@ -19,7 +19,11 @@ struct Paquete
     CoordenadasGPS coordenadas;
     string NIF;
 };
+/*struct Zona
+{
+    Cola recibidos;
 
+};*/
 class Nodo
 {
     private:
