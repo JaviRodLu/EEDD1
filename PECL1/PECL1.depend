@@ -3,12 +3,8 @@
 	<iostream>
 	"PilasColas.h"
 
-1635504524 s.h"
-
 1635094404 /home/javi/Uni/EstrDat/PECL1/PilasColas.h
 	<iostream>
-
-1635797964 
 
 1635507370 source:/home/javi/Uni/EstrDat/PECL1/main.cpp
 	<iostream>
@@ -27,15 +23,38 @@
 	<iostream>
 	"PilasColas.h"
 
-1636110891 source:/home/javi/Uni/EEDD1/PECL1/main.cpp
+1636326967 source:c:\users\santi\downloads\eedd1-master\pecl1\pilascolas.cpp
+	<iostream>
+	"PilasColas.h"
+
+1636327082 c:\users\santi\downloads\eedd1-master\pecl1\pilascolas.h
+	<iostream>
+
+1636372372 source:c:\users\santi\downloads\eedd1-master\pecl1\main.cpp
 	<iostream>
 	<ctime>
 	"PilasColas.h"
+	<iomanip>
+	<vector>
+	"Camion.h"
 
-1636109483 /home/javi/Uni/EEDD1/PECL1/PilasColas.h
+1636372048 source:c:\users\santi\downloads\eedd1-master\pecl1\camion.cpp
 	<iostream>
+	"Camion.h"
 
-1636109483 source:/home/javi/Uni/EEDD1/PECL1/PilasColas.cpp
+1636328274 c:\users\santi\downloads\eedd1-master\pecl1\camion.h
 	<iostream>
 	"PilasColas.h"
+
+1636317780 source:c:\users\santi\downloads\eedd1-master\pecl1\nodo.cpp
+
+1636324625 c:\users\santi\downloads\eedd1-master\pecl1\pila.h
+	<iostream>
+	"Paquete.h"
+
+1636323233 c:\users\santi\downloads\eedd1-master\pecl1\nodo.h
+	<iostream>
+
+1636324771 c:\users\santi\downloads\eedd1-master\pecl1\paquete.h
+	<iostream>
 

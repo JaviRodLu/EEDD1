@@ -19,11 +19,7 @@ struct Paquete
     CoordenadasGPS coordenadas;
     string NIF;
 };
-/*struct Zona
-{
-    Cola recibidos;
 
-};*/
 class Nodo
 {
     private:
@@ -32,9 +28,9 @@ class Nodo
         friend class Pila;
         friend class Cola;
     public:
-        Nodo(Paquete v, Nodo *sig = NULL)
+        Nodo(Paquete p, Nodo *sig = NULL)
         {
-            valor = v;
+            valor = p;
             siguiente = sig;
         }
 };
@@ -48,7 +44,7 @@ class Pila
     public:
         Pila() : cima(NULL) {} //Constructor de la Pila
         ~Pila();
-        void apilar(Paquete v);
+        void apilar(Paquete p);
         Paquete desapilar();
         void mostrarCima();
 };
@@ -58,7 +54,7 @@ class Cola
     public:
         Cola() : frente(NULL), final(NULL) {}
         ~Cola();
-        void encolar(Paquete v);
+        void encolar(Paquete p);
         Paquete desencolar();
         void recorrer();
     private:

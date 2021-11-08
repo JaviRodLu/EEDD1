@@ -18,10 +18,10 @@ Cola::~Cola()
 }
 
 //Meter elemento en la Pila
-void Pila::apilar(Paquete v)
+void Pila::apilar(Paquete p)
 {
     pnodo nuevo; //Var aux para manipular el nuevo nodo
-    nuevo = new Nodo(v, cima); //Se crea un nodo nuevo
+    nuevo = new Nodo(p, cima); //Se crea un nodo nuevo
     cima = nuevo; //El comienzo de la pila es el nuevo nodo
 }
 
@@ -29,14 +29,15 @@ void Pila::apilar(Paquete v)
 Paquete Pila::desapilar()
 {
     pnodo nodo; //Var aux para manipular el nodo
-    Paquete v; //Var aux para el retorno del valor del nodo
+    Paquete p; //Var aux para el retorno del valor del nodo
     Paquete vacio {"0", {{0,0,0},{0,0,0}},"0"};
     if(!cima) return vacio; // Si no hay nodos en la pila se devuelve 0
     nodo = cima;// Nodo apunta al primer elemento de la pila
     cima= nodo->siguiente; //Se asigna a pila toda la pila menos el primer elemento
-    v = nodo->valor; //Se guarda el retorno del valor del nodo
+    p = nodo->valor; //Se guarda el retorno del valor del nodo
     delete nodo; //Se borra el nodo
-    return v;
+    cout<<p.idPaquete<<endl;
+    return p;
 }
 
 void Pila::mostrarCima()
@@ -46,10 +47,10 @@ void Pila::mostrarCima()
 }
 
 //Añadir elemento en la cola
-void Cola::encolar(Paquete v)
+void Cola::encolar(Paquete p)
 {
     pnodo nuevo;
-    nuevo = new Nodo(v); // Se crea un nodo nuevo
+    nuevo = new Nodo(p); // Se crea un nodo nuevo
     if(final) final->siguiente = nuevo; // Si cola no vacía, se añade el nuevo a continuación de ultimo
     final = nuevo; //El último elemento de la cola es el nuevo nodo
     if(!frente) frente = nuevo; // Si frente es NULL, la cola está vacía y el nuevo nodo pasa a ser el primero
@@ -59,15 +60,15 @@ void Cola::encolar(Paquete v)
 Paquete Cola::desencolar()
 {
     pnodo nodo; //Var aux para manipular nodo
-    Paquete v; //Var aux para retorno del valor
+    Paquete p; //Var aux para retorno del valor
     Paquete vacio {"0", {{0,0,0},{0,0,0}},"0"};
     nodo = frente; // Nodo apunta al primer elemento de la cola
     if(!nodo) return vacio; // Si no hay nodos en la cola se devuelve 0
     frente = nodo->siguiente; //Se asigna a frente la dirección del segundo nodo
-    v = nodo->valor; //Se guarda el valor de retorno
+    p = nodo->valor; //Se guarda el valor de retorno
     delete nodo; // Se borra el nodo
     if(!frente) final = NULL; // Si cola vacía, ultimo debe ser NULL también
-    return v;
+    return p;
 }
 
 void Cola::recorrer()
@@ -80,3 +81,4 @@ void Cola::recorrer()
         nodo = nodo->siguiente;
     }
 }
+

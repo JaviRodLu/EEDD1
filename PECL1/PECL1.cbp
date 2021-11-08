@@ -38,6 +38,8 @@
 			<Add option="-Wall" />
 			<Add option="-fexceptions" />
 		</Compiler>
+		<Unit filename="Camion.cpp" />
+		<Unit filename="Camion.h" />
 		<Unit filename="PilasColas.cpp" />
 		<Unit filename="PilasColas.h" />
 		<Unit filename="main.cpp" />
