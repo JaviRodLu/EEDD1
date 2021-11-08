@@ -9,9 +9,11 @@ Truck::Truck(int maxCamion)
     maxPaquetes=maxCamion;
 }
 
-Truck::~Truck(){
+Truck::~Truck()
+{
     delete pilaCamion;
 }
+
 bool Truck::anadirPaquete(Paquete p)//Añadir paquete en el camion
 {
     if(nPaquetes>=maxPaquetes){

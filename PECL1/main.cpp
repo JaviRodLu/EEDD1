@@ -1,13 +1,16 @@
 #include <iostream>
 #include <ctime>
-#include "PilasColas.h"
 #include <iomanip>
 #include <vector>
+#include "PilasColas.h"
 #include "Camion.h"
+
 #define N1 100
 #define N2 10
 #define N3 5
+
 using namespace std;
+
 string padTo(std::string &str, const size_t num, const char paddingChar = '0')//Funcion que sirve para rellenar con 0 cuando la division de los numeros aleatorios generados para el id entre 99 y 9999 sale de menos numeros
 {
     if(num > str.size())
@@ -84,8 +87,6 @@ void sigInstruccion()//Método para ir paso a paso con la ejecución del programa
 
 int main()
 {
-    cout<<string(33, '#')<<"ALMACEN DE PAQUETES"<<string(33, '#')<<endl;
-    cout<<string(27, '=')<<"LISTADO DE PAQUETES ALMACENADOS"<<string(27, '=')<<endl;
     srand(time(NULL));
     Cola almacen;
     Truck *camionNO,*camionNE,*camionSO,*camionSE;
@@ -97,20 +98,29 @@ int main()
     int paquetesCargadosNO=0,paquetesCargadosNE=0,paquetesCargadosSO=0,paquetesCargadosSE=0;
     int numCamionesNO=0,numCamionesNE=0,numCamionesSO=0,numCamionesSE=0;
     int gradLat=0, minLat=0, segLat=0, gradLong=0, minLong=0, segLong=0;
-    Paquete p;
-    int n;
+    Paquete p, pNO, pNE, pSO, pSE;
+    int j=0, n=0;
     int contador=0;
     int contadorPaquetes=N1;
     //int contadorAux=0
-    for (int j=0; j<N1; j++)//Crea los 100 paquetes y los muestra por pantalla
+    cout<<string(33, '#')<<"ALMACEN DE PAQUETES"<<string(33, '#')<<endl;
+    cout<<string(27, '=')<<"LISTADO DE PAQUETES ALMACENADOS"<<string(27, '=')<<endl;
+    cout << setw(4) << " No." << "|" << setw(7) << "ID Paq " << "|" << setw(9) << "   NIF   " << "|" << setw(21) << "     Coordenadas     " << "|" << endl;
+    cout << string(22, ' ') << "|" << setw(10) << " Latitud  " << "|"<< setw(10) << " Longitud " << "|" << endl;
+    cout << string(45, '-') << endl;
+
+    for (j=0; j<N1; j++)//Crea los 100 paquetes y los muestra por pantalla
     {
         p = generarPaquete();
         almacen.encolar(p);
         ++paquetesGenerados;
         n=j+1;
-        cout <<setw(3)<< n <<". " <<"ID: " <<setw(7)<<p.idPaquete <<" NIF: "<<setw(9)<<p.NIF<<" Coordenadas: Latitud: "<<setw(2)<<p.coordenadas.latitud[0]<<"*"<<setw(2)<<p.coordenadas.latitud[1]<<"'"<<setw(2)<<p.coordenadas.latitud[2]<<"''"<< " Longitud: "<<setw(2)<<p.coordenadas.longitud[0]<<"*"<<setw(2)<<p.coordenadas.longitud[1]<<"'"<<setw(2)<<p.coordenadas.longitud[2]<<"''"<< endl; //Prueba
+        //cout << setw(3)<< n << ". " << "ID: " << setw(7) << p.idPaquete << " NIF: " << setw(9) << p.NIF << " Coordenadas: Latitud: " << setw(2) << p.coordenadas.latitud[0] << "*" << setw(2) << p.coordenadas.latitud[1] << "'" << setw(2) << p.coordenadas.latitud[2] << "''" << " Longitud: " << setw(2) << p.coordenadas.longitud[0] << "*"<< setw(2) << p.coordenadas.longitud[1] << "'" << setw(2) << p.coordenadas.longitud[2] << "''" << endl;
+        cout << setw(4)<< n << " " << setw(7) << p.idPaquete << " " << setw(9) << p.NIF << " " << setw(2) << p.coordenadas.latitud[0] << "*" << setw(2) << p.coordenadas.latitud[1] << "'" << setw(2) << p.coordenadas.latitud[2] << "''" << " " << setw(2) << p.coordenadas.longitud[0] << "*"<< setw(2) << p.coordenadas.longitud[1] << "'" << setw(2) << p.coordenadas.longitud[2] << "''" << endl;
     }
+
     cout<<string(34, '=')<<"Envio de paquetes"<<string(34, '=')<<endl;
+
     while(contadorPaquetes>0)
     {
         sigInstruccion();
@@ -118,7 +128,6 @@ int main()
         int paquetesCogidos=0;
         while (paquetesCogidos++ < N2)
         {
-
             //Cogemos el siguiente paquete del almacen
             p = almacen.desencolar();
             //Discriminamos por zona el destino del paquete
@@ -136,51 +145,74 @@ int main()
                 {
                     if(!camionNO->anadirPaquete(p))
                     {
-
                         camionNO=new Truck(N3);
                         numCamionesNO++;
                     }
-
+                    cout << setw(7) << p.idPaquete << endl;
                     ++paquetesCogidosNO;
-
-
-                }
-                else//Paquetes que van a la zona NE
-                {
+                } else {//Paquetes que van a la zona NE
                     if(!camionNE->anadirPaquete(p))
                     {
                         camionNE=new Truck(N3);
                         numCamionesNE++;
                     }
+                    cout << setw(7) << p.idPaquete << endl;
                     ++paquetesCogidosNE;
                 }
-            }
-            else
-            {
+            } else {
                 if (minLong >=22)//Paquetes que van a la zona SO
                 {
                     if(!camionSO->anadirPaquete(p))
                     {
                         camionSO=new Truck(N3);
                         numCamionesSO++;
-
                     }
+                    cout << setw(7) << p.idPaquete << endl;
                     ++paquetesCogidosSO;
-
-                }
-                else//Paquetes que van a la zona SE
-                {
+                } else {//Paquetes que van a la zona SE
                     if(!camionSE->anadirPaquete(p))
                     {
                         camionSE=new Truck(N3);
                         numCamionesSE++;
-
                     }
+                    cout << setw(7) << p.idPaquete << endl;
                     ++paquetesCogidosSE;
                 }
             }
 
+            cout << "Camión a NO: " << endl;
+            if (camionNO->nPaquetes != 0)
+            {
+                camionNO->pilaCamion.desapilar();
+                --camionNO.nPaquetes;
+            }
+            cout << endl;
+
+            cout << "Camión a NE: " << endl;
+            if (camionNE->nPaquetes != 0)
+            {
+                camionNE->pilaCamion.desapilar();
+                --camionNE.nPaquetes;
+            }
+            cout << endl;
+
+            cout << "Camión a SO: " << endl;
+            if (camionSO->nPaquetes != 0)
+            {
+                camionSO->pilaCamion.desapilar();
+                --camionSO.nPaquetes;
+            }
+            cout << endl;
+
+            cout << "Camión a SE: " << endl;
+            if (camionSE->nPaquetes != 0)
+            {
+                camionSE->pilaCamion.desapilar();
+                --camionSE.nPaquetes;
+            }
+            cout << endl;
         }
+
         contadorPaquetes-=paquetesCogidos;
         cout<<string(33, '=')<<"Estadistica ronda "<<contador<<string(33, '=')<<endl;
         cout<<string(26, ' ')<<"Camiones enviados a zona NO : "<<setw(3)<< numCamionesNO<<string(26, ' ')<< endl;
