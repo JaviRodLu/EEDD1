@@ -17,10 +17,17 @@ Truck::~Truck()
 bool Truck::anadirPaquete(Paquete p)//Añadir paquete en el camion
 {
     if(nPaquetes>=maxPaquetes){
-    return false;
+        return false;
+    } else {
+        ++nPaquetes;
+        pilaCamion->apilar(p);
+        return true;
     }
-    ++nPaquetes;
-    pilaCamion->apilar(p);
+}
 
-    return true;
+Paquete Truck::sacarPaquete()
+{
+    if (nPaquetes > 0){
+        pilaCamion->desapilar();
+    }
 }

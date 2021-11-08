@@ -15,6 +15,7 @@ public:
     Truck(int maxPaquetes); //Constructor del camion
     ~Truck();
     bool anadirPaquete(Paquete p);
+    Paquete sacarPaquete();
 };
 
 #endif

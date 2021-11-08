@@ -181,34 +181,30 @@ int main()
             }
 
             cout << "Camión a NO: " << endl;
-            if (camionNO->nPaquetes != 0)
+            if (camionNO->nPaquetes > 0)
             {
-                camionNO->pilaCamion.desapilar();
-                --camionNO.nPaquetes;
+                camionNO->sacarPaquete;
             }
             cout << endl;
 
             cout << "Camión a NE: " << endl;
-            if (camionNE->nPaquetes != 0)
+            if (camionNE->nPaquetes > 0)
             {
-                camionNE->pilaCamion.desapilar();
-                --camionNE.nPaquetes;
+                camionNE->sacarPaquete;
             }
             cout << endl;
 
             cout << "Camión a SO: " << endl;
-            if (camionSO->nPaquetes != 0)
+            if (camionSO->nPaquetes > 0)
             {
-                camionSO->pilaCamion.desapilar();
-                --camionSO.nPaquetes;
+                camionSO->sacarPaquete;
             }
             cout << endl;
 
             cout << "Camión a SE: " << endl;
-            if (camionSE->nPaquetes != 0)
+            if (camionSE->nPaquetes > 0)
             {
-                camionSE->pilaCamion.desapilar();
-                --camionSE.nPaquetes;
+                camionSE->sacarPaquete;
             }
             cout << endl;
         }
