@@ -33,7 +33,7 @@ string generarNIF()//Funcion que genera el NIF del paquete
 {
     int numero;
     string NIF;
-    char letras[] = {'T','R','w','A','G','M','Y','F','P','D','X','B','N','J','Z','S','Q','V','H','L','C','K','E'};
+    char letras[] = {'T','R','W','A','G','M','Y','F','P','D','X','B','N','J','Z','S','Q','V','H','L','C','K','E'};
 
     for (int i=0; i<6; i++)
     {
@@ -90,10 +90,10 @@ int main()
     srand(time(NULL));
     Cola almacen;
     Truck *camionNO,*camionNE,*camionSO,*camionSE;
-    camionNO=new Truck(N3);
-    camionNE=new Truck(N3);
-    camionSO=new Truck(N3);
-    camionSE=new Truck(N3);
+    camionNO = new Truck(N3);
+    camionNE = new Truck(N3);
+    camionSO = new Truck(N3);
+    camionSE = new Truck(N3);
     int paquetesGenerados=0, paquetesCogidosNO=0,paquetesCogidosNE=0,paquetesCogidosSO=0,paquetesCogidosSE=0;
     int numCamionesNO=0,numCamionesNE=0,numCamionesSO=0,numCamionesSE=0;
     int gradLat=0, minLat=0, segLat=0, gradLong=0, minLong=0, segLong=0;
@@ -103,8 +103,8 @@ int main()
     int contador=0;
     int contadorPaquetes=N1;
 
-    cout<<string(33, '#')<<"ALMACEN DE PAQUETES"<<string(33, '#')<<endl;
-    cout<<string(27, '=')<<"LISTADO DE PAQUETES ALMACENADOS"<<string(27, '=')<<endl;
+    cout << string(33, '#') << "ALMACEN DE PAQUETES" << string(33, '#') << endl;
+    cout << string(27, '=') << "LISTADO DE PAQUETES ALMACENADOS" << string(27, '=') << endl;
     cout << setw(4) << " No." << "|" << setw(7) << "ID Paq " << "|" << setw(9) << "   NIF   " << "|" << setw(21) << "     Coordenadas     " << "|" << endl;
     cout << string(22, ' ') << "|" << setw(10) << " Latitud  " << "|"<< setw(10) << " Longitud " << "|" << endl;
     cout << string(45, '-') << endl;
@@ -115,11 +115,10 @@ int main()
         almacen.encolar(p);
         ++paquetesGenerados;
         n=j+1;
-        //cout << setw(3)<< n << ". " << "ID: " << setw(7) << p.idPaquete << " NIF: " << setw(9) << p.NIF << " Coordenadas: Latitud: " << setw(2) << p.coordenadas.latitud[0] << "*" << setw(2) << p.coordenadas.latitud[1] << "'" << setw(2) << p.coordenadas.latitud[2] << "''" << " Longitud: " << setw(2) << p.coordenadas.longitud[0] << "*"<< setw(2) << p.coordenadas.longitud[1] << "'" << setw(2) << p.coordenadas.longitud[2] << "''" << endl;
         cout << setw(4)<< n << " " << setw(7) << p.idPaquete << " " << setw(9) << p.NIF << " " << setw(2) << p.coordenadas.latitud[0] << "*" << setw(2) << p.coordenadas.latitud[1] << "'" << setw(2) << p.coordenadas.latitud[2] << "''" << " " << setw(2) << p.coordenadas.longitud[0] << "*"<< setw(2) << p.coordenadas.longitud[1] << "'" << setw(2) << p.coordenadas.longitud[2] << "''" << endl;
     }
 
-    cout<<string(34, '=')<<"Envio de paquetes"<<string(34, '=')<<endl;
+    cout << string(34, '=') << "Envio de paquetes" << string(34, '=') <<endl;
 
     while(contadorPaquetes>0)
     {
@@ -184,7 +183,7 @@ int main()
 
         cout << endl;
 
-        //¿Existiría alguna forma de, por decirlo de alguna forma, hacer una copia del camión para no modificar el original?
+        //¿Existiría alguna forma de, por decirlo de alguna forma, hacer una copia del camión para así no modificar el original?
         cout << "Camion a NO: " << endl;
         while (!camionNO->estaVacio()){
             pNO= camionNO-> sacarPaquete();
