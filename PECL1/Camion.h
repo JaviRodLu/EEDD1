@@ -1,8 +1,8 @@
 #ifndef Camion
 #define Camion
 #include <iostream>
-using namespace std;
 #include "PilasColas.h"
+using namespace std;
 //Definición del tipo Camion:
 
 class Truck

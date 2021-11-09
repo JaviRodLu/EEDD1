@@ -27,7 +27,14 @@ bool Truck::anadirPaquete(Paquete p)//Añadir paquete en el camion
 
 Paquete Truck::sacarPaquete()
 {
-    if (nPaquetes > 0){
-        pilaCamion->desapilar();
+    Paquete p;
+    Paquete vacio {"0", {{0,0,0},{0,0,0}},"0"};
+    if (nPaquetes > 0)
+    {
+        --nPaquetes;
+        p=pilaCamion->desapilar();
+        return p;
+    }else{
+        return vacio;
     }
 }

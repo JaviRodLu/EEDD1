@@ -45,7 +45,20 @@ void Pila::mostrarCima()
     if (!cima) cout << "Cima: pila vacía" << endl;
     else cout << "Cima: " << cima->valor.idPaquete << endl;
 }
+bool Pila:: esVacio()
+{
+    Paquete p;
+    Paquete vacio {"0", {{0,0,0},{0,0,0}},"0"};
 
+    if (p==vacio)
+    {
+        return true;
+    }
+    else
+    {
+        return false;
+    }
+}
 //Añadir elemento en la cola
 void Cola::encolar(Paquete p)
 {

@@ -81,3 +81,26 @@
 	<iostream>
 	"PilasColas.h"
 
+1636480474 source:c:\users\santi\documents\eedd1-master\pecl1\camion.cpp
+	<iostream>
+	"Camion.h"
+
+1636479487 c:\users\santi\documents\eedd1-master\pecl1\camion.h
+	<iostream>
+	"PilasColas.h"
+
+1636480832 c:\users\santi\documents\eedd1-master\pecl1\pilascolas.h
+	<iostream>
+
+1636478051 source:c:\users\santi\documents\eedd1-master\pecl1\main.cpp
+	<iostream>
+	<ctime>
+	<iomanip>
+	<vector>
+	"PilasColas.h"
+	"Camion.h"
+
+1636395581 source:c:\users\santi\documents\eedd1-master\pecl1\pilascolas.cpp
+	<iostream>
+	"PilasColas.h"
+

@@ -126,6 +126,7 @@ int main()
         sigInstruccion();
         ++contador;
         int paquetesCogidos=0;
+        cout<<"Paquetes escogidos en la ronda: "<<contador<<endl;
         while (paquetesCogidos++ < N2)
         {
             //Cogemos el siguiente paquete del almacen
@@ -180,35 +181,34 @@ int main()
                 }
             }
 
-            cout << "Camión a NO: " << endl;
-            if (camionNO->nPaquetes > 0)
-            {
-                camionNO->sacarPaquete;
-            }
+            cout << "Camion a NO: " << endl;
+            Paquete p= camionNO-> sacarPaquete();
+            Paquete vacio {"0", {{0,0,0},{0,0,0}},"0"};
+            if (p !=esVacio){
+                cout<<p.idPaquete<<endl;
             cout << endl;
 
-            cout << "Camión a NE: " << endl;
-            if (camionNE->nPaquetes > 0)
-            {
-                camionNE->sacarPaquete;
-            }
+            /*cout << "Camion a NE: " << endl;
+            Paquete p= camionNE-> sacarPaquete();
+            if (p !=NULL){
+                cout<<p.idPaquete<<endl;
             cout << endl;
 
-            cout << "Camión a SO: " << endl;
-            if (camionSO->nPaquetes > 0)
-            {
-                camionSO->sacarPaquete;
-            }
+            cout << "Camion a SO: " << endl;
+            Paquete p= camionSO-> sacarPaquete();
+            if (p !=NULL){
+                cout<<p.idPaquete<<endl;
             cout << endl;
 
-            cout << "Camión a SE: " << endl;
-            if (camionSE->nPaquetes > 0)
-            {
-                camionSE->sacarPaquete;
-            }
+            cout << "Camion a SE: " << endl;
+            Paquete p= camionSE-> sacarPaquete();
+            if (p !=NULL){
+                cout<<p.idPaquete<<endl;
             cout << endl;
-        }
+            }*/
 
+
+    }
         contadorPaquetes-=paquetesCogidos;
         cout<<string(33, '=')<<"Estadistica ronda "<<contador<<string(33, '=')<<endl;
         cout<<string(26, ' ')<<"Camiones enviados a zona NO : "<<setw(3)<< numCamionesNO<<string(26, ' ')<< endl;
@@ -220,7 +220,31 @@ int main()
         cout<<string(30, ' ')<<"Paquetes en zona NE : "<<setw(3)<<paquetesCogidosNE<<string(30, ' ')<<endl;
         cout<<string(30, ' ')<<"Paquetes en zona SO : "<<setw(3)<<paquetesCogidosSO<<string(30, ' ')<<endl;
         cout<<string(30, ' ')<<"Paquetes en zona SE : "<<setw(3)<<paquetesCogidosSE<<string(30, ' ')<<endl;
+        cout<<endl;
+}   cout<<string(30, '=')<<"Informe estadistico final"<<string(30, '=')<<endl;
+    cout<<string(27, ' ')<<"Paquetes enviados a zona NO: "<<paquetesCogidosNO<<string(25, ' ')<<endl;
+    cout<<string(27, ' ')<<"Paquetes enviados a zona NE: "<<paquetesCogidosNE<<string(25, ' ')<<endl;
+    cout<<string(27, ' ')<<"Paquetes enviados a zona SO: "<<paquetesCogidosSO<<string(25, ' ')<<endl;
+    cout<<string(27, ' ')<<"Paquetes enviados a zona SE: "<<paquetesCogidosSE<<string(25, ' ')<<endl;
+    cout<<string(26, ' ')<<"Camiones enviados a zona NO : "<<setw(3)<< numCamionesNO<<string(26, ' ')<< endl;
+    cout<<string(26, ' ')<<"Camiones enviados a zona NE : "<<setw(3)<< numCamionesNE<<string(26, ' ')<< endl;
+    cout<<string(26, ' ')<<"Camiones enviados a zona SO : "<<setw(3)<< numCamionesSO<<string(26, ' ')<< endl;
+    cout<<string(26, ' ')<<"Camiones enviados a zona SE : "<<setw(3)<< numCamionesSE<<string(26, ' ')<< endl;
+    if(paquetesCogidosNO>paquetesCogidosNE && paquetesCogidosNO>paquetesCogidosSE && paquetesCogidosNO>paquetesCogidosSO)
+    {
+        cout<<"La zona con el mayor numero de paquetes entregados ha sido la noroeste con : "<<paquetesCogidosNO<<" paquetes entregados"<<endl;
     }
-
+    else if(paquetesCogidosNE>paquetesCogidosSE&&paquetesCogidosNE>paquetesCogidosSO)
+    {
+        cout<<"La zona con el mayor numero de paquetes entregados ha sido la noreste con : "<<paquetesCogidosNE<<" paquetes entregados"<<endl;
+    }
+    else if(paquetesCogidosSO>paquetesCogidosSE)
+    {
+        cout<<"La zona con el mayor numero de paquetes entregados ha sido la suroeste con : "<<paquetesCogidosSO<<" paquetes entregados"<<endl;
+    }
+    else
+    {
+        cout<<"La zona con el mayor numero de paquetes entregados ha sido la sureste con : "<<paquetesCogidosSE<<" paquetes entregados"<<endl;
+    }
     return 0;
-}
+    }

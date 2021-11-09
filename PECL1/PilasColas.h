@@ -47,6 +47,7 @@ class Pila
         void apilar(Paquete p);
         Paquete desapilar();
         void mostrarCima();
+        bool esVacio();
 };
 
 class Cola
