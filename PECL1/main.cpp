@@ -95,14 +95,14 @@ int main()
     camionSO=new Truck(N3);
     camionSE=new Truck(N3);
     int paquetesGenerados=0, paquetesCogidosNO=0,paquetesCogidosNE=0,paquetesCogidosSO=0,paquetesCogidosSE=0;
-    int paquetesCargadosNO=0,paquetesCargadosNE=0,paquetesCargadosSO=0,paquetesCargadosSE=0;
     int numCamionesNO=0,numCamionesNE=0,numCamionesSO=0,numCamionesSE=0;
     int gradLat=0, minLat=0, segLat=0, gradLong=0, minLong=0, segLong=0;
     Paquete p, pNO, pNE, pSO, pSE;
+    Paquete vacio {"0", {{0,0,0},{0,0,0}},"0"};
     int j=0, n=0;
     int contador=0;
     int contadorPaquetes=N1;
-    //int contadorAux=0
+
     cout<<string(33, '#')<<"ALMACEN DE PAQUETES"<<string(33, '#')<<endl;
     cout<<string(27, '=')<<"LISTADO DE PAQUETES ALMACENADOS"<<string(27, '=')<<endl;
     cout << setw(4) << " No." << "|" << setw(7) << "ID Paq " << "|" << setw(9) << "   NIF   " << "|" << setw(21) << "     Coordenadas     " << "|" << endl;
@@ -126,7 +126,7 @@ int main()
         sigInstruccion();
         ++contador;
         int paquetesCogidos=0;
-        cout<<"Paquetes escogidos en la ronda: "<<contador<<endl;
+        cout << "Paquetes escogidos en la ronda " << contador << ":"<<endl;
         while (paquetesCogidos++ < N2)
         {
             //Cogemos el siguiente paquete del almacen
@@ -180,71 +180,87 @@ int main()
                     ++paquetesCogidosSE;
                 }
             }
+        }
 
-            cout << "Camion a NO: " << endl;
-            Paquete p= camionNO-> sacarPaquete();
-            Paquete vacio {"0", {{0,0,0},{0,0,0}},"0"};
-            if (p !=esVacio){
-                cout<<p.idPaquete<<endl;
-            cout << endl;
+        cout << endl;
 
-            /*cout << "Camion a NE: " << endl;
-            Paquete p= camionNE-> sacarPaquete();
-            if (p !=NULL){
-                cout<<p.idPaquete<<endl;
-            cout << endl;
+        //¿Existiría alguna forma de, por decirlo de alguna forma, hacer una copia del camión para no modificar el original?
+        cout << "Camion a NO: " << endl;
+        while (!camionNO->estaVacio()){
+            pNO= camionNO-> sacarPaquete();
+            if (!pNO.esVacio()){
+                cout << pNO.idPaquete << endl;
+            }
+        }
+        cout << endl;
 
-            cout << "Camion a SO: " << endl;
-            Paquete p= camionSO-> sacarPaquete();
-            if (p !=NULL){
-                cout<<p.idPaquete<<endl;
-            cout << endl;
+        cout << "Camion a NE: " << endl;
+        while (!camionNE->estaVacio()){
+            pNE= camionNE-> sacarPaquete();
+            if (!pNE.esVacio()){
+                cout << pNE.idPaquete << endl;
+            }
+        }
+        cout << endl;
 
-            cout << "Camion a SE: " << endl;
-            Paquete p= camionSE-> sacarPaquete();
-            if (p !=NULL){
-                cout<<p.idPaquete<<endl;
-            cout << endl;
-            }*/
+        cout << "Camion a SO: " << endl;
+        while (!camionSO->estaVacio()){
+            pSO= camionSO-> sacarPaquete();
+            if (!pSO.esVacio()){
+            cout << pSO.idPaquete << endl;
+            }
+        }
+        cout << endl;
 
+        cout << "Camion a SE: " << endl;
+        while (!camionSE->estaVacio()){
+            pSE= camionSE-> sacarPaquete();
+            if (!pSE.esVacio()){
+            cout << pSE.idPaquete << endl;
+            }
+        }
+        cout << endl;
 
-    }
         contadorPaquetes-=paquetesCogidos;
-        cout<<string(33, '=')<<"Estadistica ronda "<<contador<<string(33, '=')<<endl;
-        cout<<string(26, ' ')<<"Camiones enviados a zona NO : "<<setw(3)<< numCamionesNO<<string(26, ' ')<< endl;
-        cout<<string(26, ' ')<<"Camiones enviados a zona NE : "<<setw(3)<< numCamionesNE<<string(26, ' ')<< endl;
-        cout<<string(26, ' ')<<"Camiones enviados a zona SO : "<<setw(3)<< numCamionesSO<<string(26, ' ')<< endl;
-        cout<<string(26, ' ')<<"Camiones enviados a zona SE : "<<setw(3)<< numCamionesSE<<string(26, ' ')<< endl;
+        cout << string(33, '=') << "Estadistica ronda " << contador << string(33, '=') << endl;
+        cout << string(26, ' ') << "Camiones enviados a zona NO : " <<setw(3) << numCamionesNO << string(26, ' ') << endl;
+        cout << string(26, ' ') << "Camiones enviados a zona NE : " <<setw(3) << numCamionesNE << string(26, ' ') << endl;
+        cout << string(26, ' ') << "Camiones enviados a zona SO : " <<setw(3) << numCamionesSO << string(26, ' ') << endl;
+        cout << string(26, ' ') << "Camiones enviados a zona SE : " <<setw(3) << numCamionesSE << string(26, ' ') << endl;
 
-        cout<<string(30, ' ')<<"Paquetes en zona NO : "<<setw(3)<<paquetesCogidosNO<<string(30, ' ')<<endl;
-        cout<<string(30, ' ')<<"Paquetes en zona NE : "<<setw(3)<<paquetesCogidosNE<<string(30, ' ')<<endl;
-        cout<<string(30, ' ')<<"Paquetes en zona SO : "<<setw(3)<<paquetesCogidosSO<<string(30, ' ')<<endl;
-        cout<<string(30, ' ')<<"Paquetes en zona SE : "<<setw(3)<<paquetesCogidosSE<<string(30, ' ')<<endl;
-        cout<<endl;
-}   cout<<string(30, '=')<<"Informe estadistico final"<<string(30, '=')<<endl;
-    cout<<string(27, ' ')<<"Paquetes enviados a zona NO: "<<paquetesCogidosNO<<string(25, ' ')<<endl;
-    cout<<string(27, ' ')<<"Paquetes enviados a zona NE: "<<paquetesCogidosNE<<string(25, ' ')<<endl;
-    cout<<string(27, ' ')<<"Paquetes enviados a zona SO: "<<paquetesCogidosSO<<string(25, ' ')<<endl;
-    cout<<string(27, ' ')<<"Paquetes enviados a zona SE: "<<paquetesCogidosSE<<string(25, ' ')<<endl;
-    cout<<string(26, ' ')<<"Camiones enviados a zona NO : "<<setw(3)<< numCamionesNO<<string(26, ' ')<< endl;
-    cout<<string(26, ' ')<<"Camiones enviados a zona NE : "<<setw(3)<< numCamionesNE<<string(26, ' ')<< endl;
-    cout<<string(26, ' ')<<"Camiones enviados a zona SO : "<<setw(3)<< numCamionesSO<<string(26, ' ')<< endl;
-    cout<<string(26, ' ')<<"Camiones enviados a zona SE : "<<setw(3)<< numCamionesSE<<string(26, ' ')<< endl;
+        cout << string(30, ' ') << "Paquetes en zona NO : " << setw(3) << paquetesCogidosNO << string(30, ' ') << endl;
+        cout << string(30, ' ') << "Paquetes en zona NE : " << setw(3) << paquetesCogidosNE << string(30, ' ') << endl;
+        cout << string(30, ' ') << "Paquetes en zona SO : " << setw(3) << paquetesCogidosSO << string(30, ' ') << endl;
+        cout << string(30, ' ') << "Paquetes en zona SE : " << setw(3) << paquetesCogidosSE << string(30, ' ') << endl;
+        cout << endl;
+    }
+
+    cout << string(30, '=') << "Informe estadistico final" << string(30, '=') << endl;
+    cout << string(27, ' ') << "Paquetes enviados a zona NO: " << paquetesCogidosNO << string(25, ' ') << endl;
+    cout << string(27, ' ') << "Paquetes enviados a zona NE: " << paquetesCogidosNE << string(25, ' ') << endl;
+    cout << string(27, ' ') << "Paquetes enviados a zona SO: " << paquetesCogidosSO << string(25, ' ') << endl;
+    cout << string(27, ' ') << "Paquetes enviados a zona SE: " << paquetesCogidosSE << string(25, ' ') << endl;
+    cout << string(26, ' ') << "Camiones enviados a zona NO : " << setw(3) << numCamionesNO << string(26, ' ') << endl;
+    cout << string(26, ' ') << "Camiones enviados a zona NE : " << setw(3) << numCamionesNE << string(26, ' ') << endl;
+    cout << string(26, ' ') << "Camiones enviados a zona SO : " << setw(3) << numCamionesSO << string(26, ' ') << endl;
+    cout << string(26, ' ') << "Camiones enviados a zona SE : " << setw(3) << numCamionesSE << string(26, ' ') << endl;
+
     if(paquetesCogidosNO>paquetesCogidosNE && paquetesCogidosNO>paquetesCogidosSE && paquetesCogidosNO>paquetesCogidosSO)
     {
-        cout<<"La zona con el mayor numero de paquetes entregados ha sido la noroeste con : "<<paquetesCogidosNO<<" paquetes entregados"<<endl;
+        cout << "La zona con mayor numero de paquetes entregados ha sido la Noroeste con: " << paquetesCogidosNO << " paquetes entregados." << endl;
     }
     else if(paquetesCogidosNE>paquetesCogidosSE&&paquetesCogidosNE>paquetesCogidosSO)
     {
-        cout<<"La zona con el mayor numero de paquetes entregados ha sido la noreste con : "<<paquetesCogidosNE<<" paquetes entregados"<<endl;
+        cout << "La zona con mayor numero de paquetes entregados ha sido la Noreste con: " << paquetesCogidosNE << " paquetes entregados." << endl;
     }
     else if(paquetesCogidosSO>paquetesCogidosSE)
     {
-        cout<<"La zona con el mayor numero de paquetes entregados ha sido la suroeste con : "<<paquetesCogidosSO<<" paquetes entregados"<<endl;
+        cout << "La zona con mayor numero de paquetes entregados ha sido la Suroeste con: " << paquetesCogidosSO << " paquetes entregados." << endl;
     }
     else
     {
-        cout<<"La zona con el mayor numero de paquetes entregados ha sido la sureste con : "<<paquetesCogidosSE<<" paquetes entregados"<<endl;
+        cout << "La zona con mayor numero de paquetes entregados ha sido la Sureste con: " << paquetesCogidosSE << " paquetes entregados." << endl;
     }
+
     return 0;
-    }
+}

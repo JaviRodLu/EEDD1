@@ -38,3 +38,9 @@ Paquete Truck::sacarPaquete()
         return vacio;
     }
 }
+
+bool Truck::estaVacio()
+{
+    if (nPaquetes == 0) return true;
+    else return false;
+}

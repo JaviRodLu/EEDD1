@@ -16,6 +16,7 @@ public:
     ~Truck();
     bool anadirPaquete(Paquete p);
     Paquete sacarPaquete();
+    bool estaVacio();
 };
 
 #endif

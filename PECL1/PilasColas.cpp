@@ -36,7 +36,7 @@ Paquete Pila::desapilar()
     cima= nodo->siguiente; //Se asigna a pila toda la pila menos el primer elemento
     p = nodo->valor; //Se guarda el retorno del valor del nodo
     delete nodo; //Se borra el nodo
-    cout<<p.idPaquete<<endl;
+    //cout<<p.idPaquete<<endl;
     return p;
 }
 
@@ -45,12 +45,11 @@ void Pila::mostrarCima()
     if (!cima) cout << "Cima: pila vacía" << endl;
     else cout << "Cima: " << cima->valor.idPaquete << endl;
 }
-bool Pila:: esVacio()
-{
-    Paquete p;
-    Paquete vacio {"0", {{0,0,0},{0,0,0}},"0"};
 
-    if (p==vacio)
+//Comprobar si un paquete está vacío
+bool Paquete::esVacio()
+{
+     if (idPaquete=="0")
     {
         return true;
     }
@@ -90,7 +89,7 @@ void Cola::recorrer()
     nodo = frente;
     while (nodo) //mientras nodo no sea nulo
     {
-        cout << nodo->valor.idPaquete << endl;
+        //cout << nodo->valor.idPaquete << endl;
         nodo = nodo->siguiente;
     }
 }
