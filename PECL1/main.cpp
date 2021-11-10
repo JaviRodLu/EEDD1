@@ -81,9 +81,8 @@ Paquete generarPaquete()//Funcion que genera un paquete
 
 void sigInstruccion()//Método para ir paso a paso con la ejecución del programa
 {
-    cout << '\n' << "Presiona Enter para realizar la siguiente instruccion..." << '\n' << endl;
+    cout << '\n' << "Presiona Enter para realizar la siguiente iteración..." << '\n' << endl;
     getchar();
-
 }
 
 int main()
@@ -91,14 +90,15 @@ int main()
     srand(time(NULL));
     Cola almacen;
     Truck *camionNO,*camionNE,*camionSO,*camionSE;
-    camionNO = new Truck(N3);
-    camionNE = new Truck(N3);
-    camionSO = new Truck(N3);
-    camionSE = new Truck(N3);
+    camionNO = new Truck(N3,"NO");
+    camionNE = new Truck(N3,"NE");
+    camionSO = new Truck(N3,"SO");
+    camionSE = new Truck(N3,"SE");
     int paquetesGenerados=0, paquetesCogidosNO=0,paquetesCogidosNE=0,paquetesCogidosSO=0,paquetesCogidosSE=0;
-    int numCamionesNO=1,numCamionesNE=1,numCamionesSO=1,numCamionesSE=1;
+    int numCamionesNO=0,numCamionesNE=0,numCamionesSO=0,numCamionesSE=0,numCamiones=0;
     int gradLat=0, minLat=0, segLat=0, gradLong=0, minLong=0, segLong=0;
-    Paquete p, pNO, pNE, pSO, pSE;
+    Truck** camionesTotales= new Truck *[N1/N3];
+    Paquete p;
     int j=0, n=0;
     int contador=0;
     int contadorPaquetes=N1;
@@ -146,7 +146,8 @@ int main()
 
                     if(!camionNO->anadirPaquete(p))
                     {
-                        camionNO=new Truck(N3);
+                        camionesTotales[numCamiones++]=camionNO;
+                        camionNO=new Truck(N3,"NO");
                         camionNO->anadirPaquete(p);
                         numCamionesNO++;
                     }
@@ -155,7 +156,8 @@ int main()
                 } else {//Paquetes que van a la zona NE
                     if(!camionNE->anadirPaquete(p))
                     {
-                        camionNE=new Truck(N3);
+                        camionesTotales[numCamiones++]=camionNE;
+                        camionNE=new Truck(N3,"NE");
                         camionNE->anadirPaquete(p);
                         numCamionesNE++;
                     }
@@ -167,7 +169,8 @@ int main()
                 {
                     if(!camionSO->anadirPaquete(p))
                     {
-                        camionSO=new Truck(N3);
+                        camionesTotales[numCamiones++]=camionSO;
+                        camionSO=new Truck(N3,"SO");
                         camionSO->anadirPaquete(p);
                         numCamionesSO++;
                     }
@@ -176,51 +179,14 @@ int main()
                 } else {//Paquetes que van a la zona SE
                     if(!camionSE->anadirPaquete(p))
                     {
-                        camionSE=new Truck(N3);
+                        camionesTotales[numCamiones++]=camionSE;
+                        camionSE=new Truck(N3,"SE");
                         camionSE->anadirPaquete(p);
                         numCamionesSE++;
                     }
                     cout << setw(7) << p.idPaquete << endl;
                     ++paquetesCogidosSE;
                 }
-            }
-        }
-
-        cout << endl;
-
-        cout << "Paquetes entregados en NO: " << endl;
-        while (!camionNO->estaVacio()){
-            pNO= camionNO-> sacarPaquete();
-            if (!pNO.esVacio()){
-                cout << pNO.idPaquete << endl;
-            }
-            camionNO->anadirPaquete(pNO);
-        }
-        cout << endl;
-
-        cout << "Paquetes entregados en NE: " << endl;
-        while (!camionNE->estaVacio()){
-            pNE= camionNE-> sacarPaquete();
-            if (!pNE.esVacio()){
-                cout << pNE.idPaquete << endl;
-            }
-        }
-        cout << endl;
-
-        cout << "Paquetes entregados en SO: " << endl;
-        while (!camionSO->estaVacio()){
-            pSO= camionSO-> sacarPaquete();
-            if (!pSO.esVacio()){
-                cout << pSO.idPaquete << endl;
-            }
-        }
-        cout << endl;
-
-        cout << "Paquetes entregados en SE: " << endl;
-        while (!camionSE->estaVacio()){
-            pSE= camionSE-> sacarPaquete();
-            if (!pSE.esVacio()){
-                cout << pSE.idPaquete << endl;
             }
         }
         cout << endl;
@@ -265,6 +231,21 @@ int main()
     {
         cout << "La zona con mayor numero de paquetes entregados ha sido la Sureste con: " << paquetesCogidosSE << " paquetes entregados." << endl;
     }
+
+    cout << endl;
+
+    while(--numCamiones>0){
+        Truck* camion= camionesTotales[numCamiones];
+        cout << "Paquetes entregados por el camion "<<numCamiones<<" en la zona "<<camion->zona << endl;
+        while (!camion->estaVacio()){
+            Paquete paquete= camion-> sacarPaquete();
+            if (!paquete.esVacio()){
+                cout << paquete.idPaquete << endl;
+            }
+        }
+        cout << endl;
+    }
+    cout << endl;
 
     return 0;
 }

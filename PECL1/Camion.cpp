@@ -2,11 +2,12 @@
 
 #include "Camion.h"
 
-Truck::Truck(int maxCamion)
+Truck::Truck(int maxCamion,string _zona)
 {
     pilaCamion = new Pila();
     nPaquetes=0;
     maxPaquetes=maxCamion;
+    zona=_zona;
 }
 
 Truck::~Truck()
@@ -16,9 +17,12 @@ Truck::~Truck()
 
 bool Truck::anadirPaquete(Paquete p)//Añadir paquete en el camion
 {
-    if(nPaquetes>=maxPaquetes){
+    if(nPaquetes>=maxPaquetes)
+    {
         return false;
-    } else {
+    }
+    else
+    {
         ++nPaquetes;
         pilaCamion->apilar(p);
         return true;
@@ -34,13 +38,17 @@ Paquete Truck::sacarPaquete()
         --nPaquetes;
         p=pilaCamion->desapilar();
         return p;
-    }else{
+    }
+    else
+    {
         return vacio;
     }
 }
 
 bool Truck::estaVacio()
 {
-    if (nPaquetes == 0) return true;
-    else return false;
+    if (nPaquetes == 0){
+        return true;}
+    else{
+        return false;}
 }

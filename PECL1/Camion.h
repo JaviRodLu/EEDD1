@@ -11,8 +11,10 @@ private:
     Pila *pilaCamion;
     int nPaquetes;
     int maxPaquetes;
+
 public:
-    Truck(int maxPaquetes); //Constructor del camion
+    string zona;
+    Truck(int maxPaquetes,string zona); //Constructor del camion
     ~Truck();
     bool anadirPaquete(Paquete p);
     Paquete sacarPaquete();
