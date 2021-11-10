@@ -50,7 +50,7 @@ CoordenadasGPS generarCoordenadas()//Funcion que genera las coordenadas del paqu
     CoordenadasGPS c;
     int gradLat, minLat, segLat, gradLong, minLong, segLong;
 
-    gradLat = 40;
+   gradLat = 40;
     minLat = 28 + rand()%4;
     segLat = rand()%60;
     gradLong = -3;
@@ -63,6 +63,7 @@ CoordenadasGPS generarCoordenadas()//Funcion que genera las coordenadas del paqu
     c.longitud[0] = gradLong;
     c.longitud[1] = minLong;
     c.longitud[2] = segLong;
+
 
     return c;
 }
@@ -95,10 +96,9 @@ int main()
     camionSO = new Truck(N3);
     camionSE = new Truck(N3);
     int paquetesGenerados=0, paquetesCogidosNO=0,paquetesCogidosNE=0,paquetesCogidosSO=0,paquetesCogidosSE=0;
-    int numCamionesNO=0,numCamionesNE=0,numCamionesSO=0,numCamionesSE=0;
+    int numCamionesNO=1,numCamionesNE=1,numCamionesSO=1,numCamionesSE=1;
     int gradLat=0, minLat=0, segLat=0, gradLong=0, minLong=0, segLong=0;
     Paquete p, pNO, pNE, pSO, pSE;
-    Paquete vacio {"0", {{0,0,0},{0,0,0}},"0"};
     int j=0, n=0;
     int contador=0;
     int contadorPaquetes=N1;
@@ -143,9 +143,11 @@ int main()
                 //Omitimos los grados porque son siempre los mismos (al menos en esta aplicación)
                 if (minLong >= 22)//Paquetes que van a la zona NO
                 {
+
                     if(!camionNO->anadirPaquete(p))
                     {
                         camionNO=new Truck(N3);
+                        camionNO->anadirPaquete(p);
                         numCamionesNO++;
                     }
                     cout << setw(7) << p.idPaquete << endl;
@@ -154,6 +156,7 @@ int main()
                     if(!camionNE->anadirPaquete(p))
                     {
                         camionNE=new Truck(N3);
+                        camionNE->anadirPaquete(p);
                         numCamionesNE++;
                     }
                     cout << setw(7) << p.idPaquete << endl;
@@ -165,6 +168,7 @@ int main()
                     if(!camionSO->anadirPaquete(p))
                     {
                         camionSO=new Truck(N3);
+                        camionSO->anadirPaquete(p);
                         numCamionesSO++;
                     }
                     cout << setw(7) << p.idPaquete << endl;
@@ -173,6 +177,7 @@ int main()
                     if(!camionSE->anadirPaquete(p))
                     {
                         camionSE=new Truck(N3);
+                        camionSE->anadirPaquete(p);
                         numCamionesSE++;
                     }
                     cout << setw(7) << p.idPaquete << endl;
@@ -183,17 +188,17 @@ int main()
 
         cout << endl;
 
-        //¿Existiría alguna forma de, por decirlo de alguna forma, hacer una copia del camión para así no modificar el original?
-        cout << "Camion a NO: " << endl;
+        cout << "Paquetes entregados en NO: " << endl;
         while (!camionNO->estaVacio()){
             pNO= camionNO-> sacarPaquete();
             if (!pNO.esVacio()){
                 cout << pNO.idPaquete << endl;
             }
+            camionNO->anadirPaquete(pNO);
         }
         cout << endl;
 
-        cout << "Camion a NE: " << endl;
+        cout << "Paquetes entregados en NE: " << endl;
         while (!camionNE->estaVacio()){
             pNE= camionNE-> sacarPaquete();
             if (!pNE.esVacio()){
@@ -202,20 +207,20 @@ int main()
         }
         cout << endl;
 
-        cout << "Camion a SO: " << endl;
+        cout << "Paquetes entregados en SO: " << endl;
         while (!camionSO->estaVacio()){
             pSO= camionSO-> sacarPaquete();
             if (!pSO.esVacio()){
-            cout << pSO.idPaquete << endl;
+                cout << pSO.idPaquete << endl;
             }
         }
         cout << endl;
 
-        cout << "Camion a SE: " << endl;
+        cout << "Paquetes entregados en SE: " << endl;
         while (!camionSE->estaVacio()){
             pSE= camionSE-> sacarPaquete();
             if (!pSE.esVacio()){
-            cout << pSE.idPaquete << endl;
+                cout << pSE.idPaquete << endl;
             }
         }
         cout << endl;

@@ -58,15 +58,15 @@
 1636324771 c:\users\santi\downloads\eedd1-master\pecl1\paquete.h
 	<iostream>
 
-1636485271 source:d:\uni\eedd1\pecl1\camion.cpp
+1636501612 source:d:\uni\eedd1\pecl1\camion.cpp
 	<iostream>
 	"Camion.h"
 
-1636485229 d:\uni\eedd1\pecl1\camion.h
+1636494406 d:\uni\eedd1\pecl1\camion.h
 	<iostream>
 	"PilasColas.h"
 
-1636485220 d:\uni\eedd1\pecl1\pilascolas.h
+1636494406 d:\uni\eedd1\pecl1\pilascolas.h
 	<iostream>
 
 1636486474 source:d:\uni\eedd1\pecl1\main.cpp
@@ -77,22 +77,22 @@
 	"PilasColas.h"
 	"Camion.h"
 
-1636486705 source:d:\uni\eedd1\pecl1\pilascolas.cpp
+1636494406 source:d:\uni\eedd1\pecl1\pilascolas.cpp
 	<iostream>
 	"PilasColas.h"
 
-1636480474 source:c:\users\santi\documents\eedd1-master\pecl1\camion.cpp
+1636501612 source:c:\users\santi\documents\eedd1-master\pecl1\camion.cpp
 	<iostream>
 	"Camion.h"
 
-1636479487 c:\users\santi\documents\eedd1-master\pecl1\camion.h
+1636494406 c:\users\santi\documents\eedd1-master\pecl1\camion.h
 	<iostream>
 	"PilasColas.h"
 
-1636481575 c:\users\santi\documents\eedd1-master\pecl1\pilascolas.h
+1636494406 c:\users\santi\documents\eedd1-master\pecl1\pilascolas.h
 	<iostream>
 
-1636478051 source:c:\users\santi\documents\eedd1-master\pecl1\main.cpp
+1636500702 source:c:\users\santi\documents\eedd1-master\pecl1\main.cpp
 	<iostream>
 	<ctime>
 	<iomanip>
@@ -100,7 +100,7 @@
 	"PilasColas.h"
 	"Camion.h"
 
-1636481733 source:c:\users\santi\documents\eedd1-master\pecl1\pilascolas.cpp
+1636494406 source:c:\users\santi\documents\eedd1-master\pecl1\pilascolas.cpp
 	<iostream>
 	"PilasColas.h"
 
